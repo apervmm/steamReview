@@ -15,7 +15,7 @@
 
 **Result:** Reduced the file to 3.61 GBs
 
-- Next, I checked whether or not each attributes has NULL values, and it turned out that omnly games had 5266 unlablebed names, so I decided to remove them completely from the table
+- Next, I checked whether or not each attributes has NULL values, and it turned out that 5266 columns of `game` attribute had unlablebed names, so I decided to remove them completely from the table
 
 **Result:** Reduced the file to 3.5 GBs
 
