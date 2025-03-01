@@ -1,0 +1,8 @@
+games.parquet
+reviews.parquet
+steam_games.parquet
+steam_reviews.parquet
+steam_reviews.csv
+/reviews_parts
+.venv
+__pycache__
