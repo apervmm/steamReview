@@ -20,6 +20,20 @@
 **Result:** Reduced the file to 3.5 GBs
 
 
-# 
+# Confidence Gaining
+- Confidence on **Hypothesis 1:** Reviews from users who have purchased the game (as opposed to obtained it for free) will be rated as more helpful
+<img width="285" alt="image" src="https://github.com/user-attachments/assets/565fb4d9-902f-4179-a6ab-da5f46682c3e" />
+- As it can be seen there's already a significant difference on average `helpfullness` to prove that purchased game will likely be more helpgul
+<img width="402" alt="image" src="https://github.com/user-attachments/assets/32db8605-e640-4ad4-8c3a-a3f92b5b3584" />
+
+
+
+
+- Confidence on **Hypothesis 2:** Reviews written during a game’s early access are more likely to be critical about the game specifications and expectations.
+<img width="349" alt="image" src="https://github.com/user-attachments/assets/e4cebed1-1bbb-4c53-962d-a703dc24ecdb" />\
+- As it can be seen there's already a significant difference on average `helpfullness` to prove that early stage reviews will likely be more helpgul
+<img width="519" alt="image" src="https://github.com/user-attachments/assets/56457a1e-8be8-4ab7-a09c-01810afe9019" />
+
+
 
 
