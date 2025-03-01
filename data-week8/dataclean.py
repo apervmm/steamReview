@@ -4,16 +4,15 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 
-INPUT = "steam_reviews.csv"
+INPUT = "../steam_reviews.csv"
 REVIEWS = "reviews.parquet"
-GAMES = "games.parquet"
 CHUNK = 500000
 
-REMOVE = ["hidden_in_steam_china", "steam_china_location"]
+REMOVE = ["hidden_in_steam_china", "steam_china_location", "appid", "timestamp_updated"]
 
 KEEP = [
     "recommendationid",
-    "appid",
+    "game",
     "author_steamid",
     "author_playtime_at_review",
     "author_last_played",
@@ -25,12 +24,11 @@ KEEP = [
     "comment_count",
     "steam_purchase",
     "received_for_free",
-    "written_during_early_access",
-    "game"
+    "written_during_early_access"
 ]
 
 def main():
-    unique_games = set()
+    # unique_games = set()
     writer = None
 
     chunks = pd.read_csv(
@@ -44,12 +42,11 @@ def main():
         # if i == 44 or i == 45:
         #     continue
 
-        chunk_games = chunk[["appid", "game"]].drop_duplicates()
-        for row in chunk_games.itertuples(index=False):
-            unique_games.add((row.appid, row.game))
+        # chunk_games = chunk[["appid", "game"]].drop_duplicates()
+        # for row in chunk_games.itertuples(index=False):
+        #     unique_games.add((row.appid, row.game))
 
-        to_drop = REMOVE + ["game"]
-        chunk.drop(columns=to_drop, errors="ignore", inplace=True)
+        chunk.drop(columns=REMOVE, errors="ignore", inplace=True)
 
 
         if "timestamp_created" in chunk.columns:
@@ -62,7 +59,7 @@ def main():
                 writer = pq.ParquetWriter(REVIEWS, table.schema, compression='snappy')
             writer.write_table(table)
         except ValueError as e:
-            if "Schema mismatch" in str(e):
+            if "Table schema does not match schema used to create file"  in str(e):
                 print(f"Skipp {i}")
                 continue
             else:
@@ -74,9 +71,6 @@ def main():
     if writer is not None:
         writer.close()
 
-    df_games = pd.DataFrame(list(unique_games), columns=["appid", "game"])
-    df_games.drop_duplicates(inplace=True)
-    df_games.to_parquet(GAMES, index=False)
 
 
     print("\nbDone :DD")

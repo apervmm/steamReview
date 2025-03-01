@@ -3,6 +3,9 @@ reviews.parquet
 steam_games.parquet
 steam_reviews.parquet
 steam_reviews.csv
+noNull.parquet
 /reviews_parts
+rev.parquet
 .venv
 __pycache__
+.DS_Store
